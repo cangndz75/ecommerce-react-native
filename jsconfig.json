@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+        "node",
+        "mocha",
+        "react"
+    ]
+  },
+  "exclude": ["node_modules"]
+}
