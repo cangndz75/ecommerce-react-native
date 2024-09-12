@@ -19,7 +19,7 @@ export const authenticate = async (email, password) => {
     const user = await Admin.findOne({
       email,
     });
-    if (!user.password === password) {
+    if (user && user.password === password) { 
       return Promise.resolve({ email: email, password: password });
     } else {
       return null;

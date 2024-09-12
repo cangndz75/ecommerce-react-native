@@ -3,7 +3,7 @@ import * as AdminJSMongoose from "@adminjs/mongoose";
 import * as AdminJSFastify from "@adminjs/fastify";
 import * as Models from "../model/index.js";
 import { COOKIE_PASSWORD, sessionStore, authenticate } from "./config.js";
-
+import { dark,light,noSidebar } from "@adminjs/themes";
 AdminJS.registerAdapter(AdminJSMongoose);
 
 export const admin = new AdminJS({
@@ -32,12 +32,22 @@ export const admin = new AdminJS({
     {
       resource: Models.Branch,
     },
+    {
+      resource: Models.Category,
+    },
+    {
+      resource: Models.Product,
+    },
   ],
 
   branding: {
     companyName: "Gündüz App",
     withMadeWithLove: false,
+    favicon:"https://res.cloudinary.com/dhe3yon5d/image/upload/v1726168106/rmrwkwel1kw1thidcpv9.png",
+    logo:"https://res.cloudinary.com/dhe3yon5d/image/upload/v1726168106/rmrwkwel1kw1thidcpv9.png",
   },
+  defaultTheme:dark.id,
+  availableThemes: [dark,light,noSidebar],
   rootPath: "/admin",
 });
 
