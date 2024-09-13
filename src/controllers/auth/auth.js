@@ -112,10 +112,10 @@ export const fetchUser = async (req, reply) => {
     const { userId, role } = req.user;
     let user;
 
-    if (decoded.role === "Customer") {
-      user = await Customer.findById(decoded.userId);
-    } else if (decoded.role === "Delivery Partner") {
-      user = await DeliveryPartner.findById(decoded.userId);
+    if (role === "Customer") {
+      user = await Customer.findById(userId);
+    } else if (role === "Delivery Partner") {
+      user = await DeliveryPartner.findById(userId);
     } else {
       return reply.status(403).send({ message: "Invalid Role" });
     }
