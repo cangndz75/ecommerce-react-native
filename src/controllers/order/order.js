@@ -28,8 +28,8 @@ export const createOrder = async (req, reply) => {
         address: customerData.address || "No address provided",
       },
       pickupLocation: {
-        latitude: branchData.liveLocation.latitude,
-        longitude: branchData.liveLocation.longitude,
+        latitude: branchData.location.latitude,
+        longitude: branchData.location.longitude,
         address: branchData.address || "No address provided",
       },
     });
@@ -110,8 +110,8 @@ export const getOrders = async (req, reply) => {
     if (status) query.status = status;
     if (customerId) query.customer = customerId;
     if (deliveryPartnerId) {
-      query.deliveryPerson = status;
-      query.branch = status;
+      query.deliveryPerson = deliveryPartnerId;
+      query.branch = branchId;
     }
     const orders = await Order.find(query).populate(
       "customer branch items.item deliveryPartner"
