@@ -64,7 +64,7 @@ export const confirmOrder = async (req, reply) => {
       longitude: deliveryPersonLocation?.longitude,
       address: deliveryPersonLocation.address || "",
     };
-
+    req.server.io.to(orderId).emit('orderConfirmed',order);
     await order.save();
     return reply.send(order);
   } catch (error) {
